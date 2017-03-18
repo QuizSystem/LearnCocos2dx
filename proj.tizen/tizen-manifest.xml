@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="2.3" package="com.haynhanh.LearnCocos2dx" version="1.0.0">
+    <ui-application appid="com.haynhanh.LearnCocos2dx" exec="hellocpp" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+        <label>LearnCocos2dx</label>
+        <icon>LearnCocos2dx.png</icon>
+    </ui-application>
+</manifest>
