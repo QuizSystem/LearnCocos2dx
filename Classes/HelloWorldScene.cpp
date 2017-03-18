@@ -64,7 +64,11 @@ bool HelloWorld::init()
     // Rotate
     auto actionRotateTo = RotateTo::create(secondTime, 45); // rotate to -- xoay den 45 do
     auto actionRotateBy = RotateBy::create(secondTime, 45); // rotate continue -- xoay cong them 45 do
-    square->runAction(actionRotateBy);
+//    square->runAction(actionRotateTo);
+//    square->runAction(actionMoveTo1);
+    
+    auto actionSequence = Sequence::create(actionMoveTo1, actionRotateBy, NULL);
+    square->runAction(actionSequence);
     
 //    std::vector<int> array;
 //    array = {13, 7, 1992, 1, 8, 1994};
