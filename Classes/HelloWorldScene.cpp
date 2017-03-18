@@ -46,7 +46,7 @@ bool HelloWorld::init()
     square->setAnchorPoint(Vec2::ZERO);
     square->setPosition(Vec2(origin.x , origin.y));
     square->setScale(0.5, 0.5);
-    square->setRotation(360-45);
+    square->setRotation(-90);
 //    square->setSkewX(20);
 //    square->setSkewY(20);
     this->addChild(square);
@@ -67,8 +67,15 @@ bool HelloWorld::init()
 //    square->runAction(actionRotateTo);
 //    square->runAction(actionMoveTo1);
     
-    auto actionSequence = Sequence::create(actionMoveTo1, actionRotateBy, NULL);
-    square->runAction(actionSequence);
+//    auto actionSequence = Sequence::create(actionMoveTo1, actionRotateBy, NULL);
+//    auto actionSpawn = Spawn::create(actionMoveTo1, actionRotateTo, NULL);
+//    square->runAction(actionSpawn);
+    
+    // Action Repeat
+    auto actionRoate = RotateBy::create(0.5, 10);
+    auto actionRepeatForever = RepeatForever::create(actionRoate);
+    auto actionRepeat = Repeat::create(actionRoate, 36);
+    sprite->runAction(actionRepeat);
     
 //    std::vector<int> array;
 //    array = {13, 7, 1992, 1, 8, 1994};
