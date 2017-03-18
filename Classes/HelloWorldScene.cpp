@@ -46,20 +46,25 @@ bool HelloWorld::init()
     square->setAnchorPoint(Vec2::ZERO);
     square->setPosition(Vec2(origin.x , origin.y));
     square->setScale(0.5, 0.5);
-//    square->setRotation(360-45);
+    square->setRotation(360-45);
 //    square->setSkewX(20);
 //    square->setSkewY(20);
     this->addChild(square);
     
     // Action
     float secondTime = 5;
-    auto actionMoveTo1 = MoveTo::create(secondTime, Vec2(300, 100));
+    auto actionMoveTo1 = MoveTo::create(secondTime, Vec2(300, 100)); // xnew = 300, ynew = 100
     auto actionMoveTo2 = MoveTo::create(secondTime, Vec2(300, 100));
-    auto actionMoveBy = MoveBy::create(secondTime, Vec2(300, 100));
+    auto actionMoveBy = MoveBy::create(secondTime, Vec2(300, 100)); // xnew = x + 300, ynew = y + 100
     
 //    sprite->runAction(actionMoveTo1);
-    sprite->runAction(actionMoveBy);
-    square->runAction(actionMoveTo2);
+//    sprite->runAction(actionMoveBy);
+//    square->runAction(actionMoveTo2);
+    
+    // Rotate
+    auto actionRotateTo = RotateTo::create(secondTime, 45); // rotate to -- xoay den 45 do
+    auto actionRotateBy = RotateBy::create(secondTime, 45); // rotate continue -- xoay cong them 45 do
+    square->runAction(actionRotateBy);
     
 //    std::vector<int> array;
 //    array = {13, 7, 1992, 1, 8, 1994};
