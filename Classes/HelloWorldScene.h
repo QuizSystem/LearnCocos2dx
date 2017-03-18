@@ -13,6 +13,10 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
+    void sayHello();
+    
+    int sum(int number1, int number2);
+    
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };
