@@ -34,21 +34,32 @@ bool HelloWorld::init()
     CCLOG("width = %f, height = %f", visibleSize.width, visibleSize.height);
     CCLOG("x = %f, y = %f", origin.x, origin.y);
     
+    auto sprite = Sprite::create("HelloWorld.png");
+    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    sprite->setAnchorPoint(Vec2::ZERO);
+    //    sprite->setRotation(-45);
+    //    sprite->setSkewX(-20);
+    //    sprite->setSkewY(-20);
+    this->addChild(sprite, 0);
+    
     auto square = Sprite::create("square.png");
-    square->setAnchorPoint(Vec2(0, 0));
+    square->setAnchorPoint(Vec2::ZERO);
     square->setPosition(Vec2(origin.x , origin.y));
     square->setScale(0.5, 0.5);
 //    square->setRotation(360-45);
 //    square->setSkewX(20);
-    square->setSkewY(20);
+//    square->setSkewY(20);
     this->addChild(square);
     
-    auto sprite = Sprite::create("HelloWorld.png");
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-//    sprite->setRotation(-45);
-//    sprite->setSkewX(-20);
-    sprite->setSkewY(-20);
-    this->addChild(sprite, 0);
+    // Action
+    float secondTime = 5;
+    auto actionMoveTo1 = MoveTo::create(secondTime, Vec2(300, 100));
+    auto actionMoveTo2 = MoveTo::create(secondTime, Vec2(300, 100));
+    auto actionMoveBy = MoveBy::create(secondTime, Vec2(300, 100));
+    
+//    sprite->runAction(actionMoveTo1);
+    sprite->runAction(actionMoveBy);
+    square->runAction(actionMoveTo2);
     
 //    std::vector<int> array;
 //    array = {13, 7, 1992, 1, 8, 1994};
