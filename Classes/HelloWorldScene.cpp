@@ -38,12 +38,16 @@ bool HelloWorld::init()
     square->setAnchorPoint(Vec2(0, 0));
     square->setPosition(Vec2(origin.x , origin.y));
     square->setScale(0.5, 0.5);
-    square->setRotation(360-45);
+//    square->setRotation(360-45);
+//    square->setSkewX(20);
+    square->setSkewY(20);
     this->addChild(square);
     
     auto sprite = Sprite::create("HelloWorld.png");
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    sprite->setRotation(-45);
+//    sprite->setRotation(-45);
+//    sprite->setSkewX(-20);
+    sprite->setSkewY(-20);
     this->addChild(sprite, 0);
     
 //    std::vector<int> array;
