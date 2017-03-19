@@ -1,6 +1,7 @@
 #include "SplashScene.h"
 #include "SimpleAudioEngine.h"
 #include "HelloWorldScene.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 
@@ -34,16 +35,39 @@ bool Splash::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    square = Sprite::create("square.png");
-    square->setPosition(Vec2::ZERO);
-    this->addChild(square);
+    // UIButton
+    auto button = ui::Button::create("square.png");
+    button->setPosition(visibleSize / 2);
+    button->addTouchEventListener([&](Ref *sender, ui::Widget::TouchEventType type) {
+        switch (type) {
+            case ui::Widget::TouchEventType::BEGAN:
+                CCLOG("Button BEGAN");
+                break;
+            case ui::Widget::TouchEventType::MOVED:
+                CCLOG("Button MOVED");
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                CCLOG("Button ENDED");
+                break;
+            case ui::Widget::TouchEventType::CANCELED:
+                CCLOG("Button CANCELED");
+                break;
+            default:
+                break;
+        }
+    });
+    this->addChild(button);
     
-    // Touch
-    auto touchListener = EventListenerTouchOneByOne::create();
-    touchListener->onTouchBegan = CC_CALLBACK_2(Splash::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(Splash::onTouchMoved, this);
-    touchListener->onTouchEnded = CC_CALLBACK_2(Splash::onTouchEnded, this);
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+//    square = Sprite::create("square.png");
+//    square->setPosition(Vec2::ZERO);
+//    this->addChild(square);
+//    
+//    // Touch
+//    auto touchListener = EventListenerTouchOneByOne::create();
+//    touchListener->onTouchBegan = CC_CALLBACK_2(Splash::onTouchBegan, this);
+//    touchListener->onTouchMoved = CC_CALLBACK_2(Splash::onTouchMoved, this);
+//    touchListener->onTouchEnded = CC_CALLBACK_2(Splash::onTouchEnded, this);
+//    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
     
     return true;
 }
@@ -63,8 +87,8 @@ void Splash::onTouchMoved(Touch *touch, Event *unused_event) {
 void Splash::onTouchEnded(Touch *touch, Event *unused_event) {
     auto actionMoveTo = MoveTo::create(0.5, Vec2::ZERO);
     square->runAction(actionMoveTo);
-    auto helloWorldScene = HelloWorld::createScene(137);
-    Director::getInstance()->replaceScene(helloWorldScene);
+//    auto helloWorldScene = HelloWorld::createScene(137);
+//    Director::getInstance()->replaceScene(helloWorldScene);
 }
 
 void Splash::menuCloseCallback(Ref* pSender)
