@@ -36,27 +36,49 @@ bool Splash::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     // UIButton
-    auto button = ui::Button::create("square.png");
-    button->setPosition(visibleSize / 2);
-    button->addTouchEventListener([&](Ref *sender, ui::Widget::TouchEventType type) {
+//    auto button = ui::Button::create("square.png");
+//    button->setPosition(visibleSize / 2);
+//    button->addTouchEventListener([&](Ref *sender, ui::Widget::TouchEventType type) {
+//        switch (type) {
+//            case ui::Widget::TouchEventType::BEGAN:
+//                CCLOG("Button BEGAN");
+//                break;
+//            case ui::Widget::TouchEventType::MOVED:
+//                CCLOG("Button MOVED");
+//                break;
+//            case ui::Widget::TouchEventType::ENDED:
+//                CCLOG("Button ENDED");
+//                break;
+//            case ui::Widget::TouchEventType::CANCELED:
+//                CCLOG("Button CANCELED");
+//                break;
+//            default:
+//                break;
+//        }
+//    });
+//    this->addChild(button);
+    
+    auto sprite = Sprite::create("HelloWorld.png");
+    sprite->setPosition(visibleSize / 2);
+    sprite->setScale(2);
+    this->addChild(sprite);
+    
+    //UI Checkbox
+    auto checkbox = ui::CheckBox::create("uncheck.png", "check.png");
+    checkbox->setPosition(visibleSize / 2);
+    checkbox->addEventListener([&](Ref *sender, ui::CheckBox::EventType type){
         switch (type) {
-            case ui::Widget::TouchEventType::BEGAN:
-                CCLOG("Button BEGAN");
+            case ui::CheckBox::EventType::SELECTED:
+                CCLOG("Seleted");
                 break;
-            case ui::Widget::TouchEventType::MOVED:
-                CCLOG("Button MOVED");
-                break;
-            case ui::Widget::TouchEventType::ENDED:
-                CCLOG("Button ENDED");
-                break;
-            case ui::Widget::TouchEventType::CANCELED:
-                CCLOG("Button CANCELED");
+            case ui::CheckBox::EventType::UNSELECTED:
+                CCLOG("Unseleted");
                 break;
             default:
                 break;
         }
     });
-    this->addChild(button);
+    this->addChild(checkbox);
     
 //    square = Sprite::create("square.png");
 //    square->setPosition(Vec2::ZERO);
