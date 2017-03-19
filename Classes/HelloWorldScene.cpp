@@ -39,6 +39,7 @@ bool HelloWorld::init()
     // sprite
     sprite = Sprite::create("HelloWorld.png");
     sprite->setPosition(visibleSize / 2);
+    sprite->setScale(2);
     this->addChild(sprite);
     
     // Touch
