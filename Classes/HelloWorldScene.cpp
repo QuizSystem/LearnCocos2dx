@@ -3,6 +3,8 @@
 
 USING_NS_CC;
 
+Sprite *sprite;
+
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -31,15 +33,20 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    //
+    sprite = Sprite::create("HelloWorld.png");
+    sprite->setPosition(Vec2::ZERO);
+    this->addChild(sprite);
+    
     // Touch
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 //    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
-    CCLOG("width = %f, height = %f", visibleSize.width, visibleSize.height);
-    CCLOG("x = %f, y = %f", origin.x, origin.y);
-    
+    /*
     auto sprite = Sprite::create("HelloWorld.png");
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     sprite->setAnchorPoint(Vec2::ZERO);
@@ -83,12 +90,6 @@ bool HelloWorld::init()
     auto actionRepeat = Repeat::create(actionRoate, 36);
     sprite->runAction(actionRepeat);
     
-//    std::vector<int> array;
-//    array = {13, 7, 1992, 1, 8, 1994};
-//    CCLOG("Array.size = %lu", array.size());
-//    sayHello();
-//    CCLOG("Sum = %i", sum(1, 2));
-    
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -104,21 +105,26 @@ bool HelloWorld::init()
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);
+     */
     
     return true;
 }
 
 bool HelloWorld::onTouchBegan(Touch *touch, Event *unused_event) {
-    CCLOG("Thieu Mao is here");
+    Vec2 touchLocation = touch->getLocation();
+    auto actionMoveTo = MoveTo::create(0.5, touchLocation);
+    sprite->runAction(actionMoveTo);
     return true;
 }
 
-void HelloWorld::sayHello() {
-    CCLOG("Thieu Mao");
+void HelloWorld::onTouchMoved(Touch *touch, Event *unused_event) {
+    Vec2 touchLocation = touch->getLocation();
+    sprite->setPosition(touchLocation);
 }
 
-int HelloWorld::sum(int number1, int number2) {
-    return number1 + number2;
+void HelloWorld::onTouchEnded(Touch *touch, Event *unused_event) {
+    auto actionMoveTo = MoveTo::create(0.5, Vec2::ZERO);
+    sprite->runAction(actionMoveTo);
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

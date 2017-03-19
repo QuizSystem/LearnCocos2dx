@@ -12,13 +12,11 @@ public:
     virtual bool init();
     
     bool onTouchBegan(Touch *touch, Event *unused_event);
+    void onTouchMoved(Touch *touch, Event *unused_event);
+    void onTouchEnded(Touch *touch, Event *unused_event);
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    void sayHello();
-    
-    int sum(int number1, int number2);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
