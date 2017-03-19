@@ -4,9 +4,11 @@
 USING_NS_CC;
 
 Sprite *sprite;
+int scoreCurrent;
 
-Scene* HelloWorld::createScene()
+Scene* HelloWorld::createScene(int score)
 {
+    scoreCurrent = score;
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
@@ -33,9 +35,10 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    //
+    CCLOG("Score Current = %i", scoreCurrent);
+    // sprite
     sprite = Sprite::create("HelloWorld.png");
-    sprite->setPosition(Vec2::ZERO);
+    sprite->setPosition(visibleSize / 2);
     this->addChild(sprite);
     
     // Touch
