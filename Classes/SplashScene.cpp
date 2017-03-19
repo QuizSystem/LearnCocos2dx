@@ -35,79 +35,103 @@ bool Splash::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    // UIButton
-//    auto button = ui::Button::create("square.png");
-//    button->setPosition(visibleSize / 2);
-//    button->addTouchEventListener([&](Ref *sender, ui::Widget::TouchEventType type) {
-//        switch (type) {
-//            case ui::Widget::TouchEventType::BEGAN:
-//                CCLOG("Button BEGAN");
-//                break;
-//            case ui::Widget::TouchEventType::MOVED:
-//                CCLOG("Button MOVED");
-//                break;
-//            case ui::Widget::TouchEventType::ENDED:
-//                CCLOG("Button ENDED");
-//                break;
-//            case ui::Widget::TouchEventType::CANCELED:
-//                CCLOG("Button CANCELED");
-//                break;
-//            default:
-//                break;
-//        }
-//    });
-//    this->addChild(button);
-    
-    auto sprite = Sprite::create("HelloWorld.png");
-    sprite->setPosition(visibleSize / 2);
-    sprite->setScale(2);
-    this->addChild(sprite);
-    
-//    //UI Checkbox
-//    auto checkbox = ui::CheckBox::create("uncheck.png", "check.png");
-//    checkbox->setPosition(visibleSize / 2);
-//    checkbox->addEventListener([&](Ref *sender, ui::CheckBox::EventType type){
-//        switch (type) {
-//            case ui::CheckBox::EventType::SELECTED:
-//                CCLOG("Seleted");
-//                break;
-//            case ui::CheckBox::EventType::UNSELECTED:
-//                CCLOG("Unseleted");
-//                break;
-//            default:
-//                break;
-//        }
-//    });
-//    this->addChild(checkbox);
-    
-    // UI Load Action
-    auto loadingBar = ui::LoadingBar::create("blueline.png");
-    loadingBar->setScaleX(0.3);
-    loadingBar->setPosition(visibleSize / 2);
-    loadingBar->setDirection(ui::LoadingBar::Direction::LEFT);
-    loadingBar->setPercent(0);
-    this->addChild(loadingBar);
-    this->schedule([=](float delta) {
-        float percent = loadingBar->getPercent();
-        percent++;
-        loadingBar->setPercent(percent);
-        if (percent >= 100) {
-            this->unschedule("updateLoadingBar");
-        }
-    }, 0.1f, "updateLoadingBar");
-    
-//    square = Sprite::create("square.png");
-//    square->setPosition(Vec2::ZERO);
-//    this->addChild(square);
+//    // UIButton
+////    auto button = ui::Button::create("square.png");
+////    button->setPosition(visibleSize / 2);
+////    button->addTouchEventListener([&](Ref *sender, ui::Widget::TouchEventType type) {
+////        switch (type) {
+////            case ui::Widget::TouchEventType::BEGAN:
+////                CCLOG("Button BEGAN");
+////                break;
+////            case ui::Widget::TouchEventType::MOVED:
+////                CCLOG("Button MOVED");
+////                break;
+////            case ui::Widget::TouchEventType::ENDED:
+////                CCLOG("Button ENDED");
+////                break;
+////            case ui::Widget::TouchEventType::CANCELED:
+////                CCLOG("Button CANCELED");
+////                break;
+////            default:
+////                break;
+////        }
+////    });
+////    this->addChild(button);
 //    
-//    // Touch
-//    auto touchListener = EventListenerTouchOneByOne::create();
-//    touchListener->onTouchBegan = CC_CALLBACK_2(Splash::onTouchBegan, this);
-//    touchListener->onTouchMoved = CC_CALLBACK_2(Splash::onTouchMoved, this);
-//    touchListener->onTouchEnded = CC_CALLBACK_2(Splash::onTouchEnded, this);
-//    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+//    auto sprite = Sprite::create("HelloWorld.png");
+//    sprite->setPosition(visibleSize / 2);
+//    sprite->setScale(2);
+//    this->addChild(sprite);
+//    
+////    //UI Checkbox
+////    auto checkbox = ui::CheckBox::create("uncheck.png", "check.png");
+////    checkbox->setPosition(visibleSize / 2);
+////    checkbox->addEventListener([&](Ref *sender, ui::CheckBox::EventType type){
+////        switch (type) {
+////            case ui::CheckBox::EventType::SELECTED:
+////                CCLOG("Seleted");
+////                break;
+////            case ui::CheckBox::EventType::UNSELECTED:
+////                CCLOG("Unseleted");
+////                break;
+////            default:
+////                break;
+////        }
+////    });
+////    this->addChild(checkbox);
+//    
+//    // UI Load Action
+//    auto loadingBar = ui::LoadingBar::create("blueline.png");
+//    loadingBar->setScaleX(0.3);
+//    loadingBar->setPosition(visibleSize / 2);
+//    loadingBar->setDirection(ui::LoadingBar::Direction::LEFT);
+//    loadingBar->setPercent(0);
+//    this->addChild(loadingBar);
+//    this->schedule([=](float delta) {
+//        float percent = loadingBar->getPercent();
+//        percent++;
+//        loadingBar->setPercent(percent);
+//        if (percent >= 100) {
+//            this->unschedule("updateLoadingBar");
+//        }
+//    }, 0.1f, "updateLoadingBar");
+//    
+////    square = Sprite::create("square.png");
+////    square->setPosition(Vec2::ZERO);
+////    this->addChild(square);
+////    
+////    // Touch
+////    auto touchListener = EventListenerTouchOneByOne::create();
+////    touchListener->onTouchBegan = CC_CALLBACK_2(Splash::onTouchBegan, this);
+////    touchListener->onTouchMoved = CC_CALLBACK_2(Splash::onTouchMoved, this);
+////    touchListener->onTouchEnded = CC_CALLBACK_2(Splash::onTouchEnded, this);
+////    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+//    
+//    auto closeItem = MenuItemImage::create(
+//                                           "CloseNormal.png",
+//                                           "CloseSelected.png",
+//                                           CC_CALLBACK_1(Splash::menuCloseCallback, this));
+//    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+//                                origin.y + closeItem->getContentSize().height/2));
+//    auto menu = Menu::create(closeItem, NULL);
+//    menu->setPosition(Vec2::ZERO);
+//    this->addChild(menu, 1);
     
+    auto menuImages = MenuItemImage::create("uncheck.png", "check.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
+    menuImages->setTag(1);
+    auto menuImages1 = MenuItemImage::create("redline.png", "blueline.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
+    menuImages1->setTag(2);
+    
+    auto menu = Menu::create(menuImages, menuImages1, NULL);
+    menu->setPosition(visibleSize / 2);
+    menu->alignItemsVertically();
+    this->addChild(menu);
     return true;
+}
+
+void Splash::onClickMenuItem(cocos2d::Ref *sender) {
+    auto node = dynamic_cast<Node *>(sender);
+    CCLOG("tag = %d", node->getTag());
 }
 
 bool Splash::onTouchBegan(Touch *touch, Event *unused_event) {

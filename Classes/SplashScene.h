@@ -11,6 +11,8 @@ public:
 
     virtual bool init();
     
+    void onClickMenuItem(cocos2d::Ref *sender);
+    
     bool onTouchBegan(Touch *touch, Event *unused_event);
     void onTouchMoved(Touch *touch, Event *unused_event);
     void onTouchEnded(Touch *touch, Event *unused_event);
