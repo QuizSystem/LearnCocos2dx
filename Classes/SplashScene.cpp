@@ -128,32 +128,39 @@ bool Splash::init()
 //    menu->alignItemsVertically();
 //    this->addChild(menu);
     
-    auto pageView = ui::PageView::create();
-    pageView->setPosition(Vec2::ZERO);
-    pageView->setContentSize(visibleSize);
-    this->addChild(pageView);
-//    auto mySprite = cocos2d::Sprite::create("square.png");
-//    mySprite->setScale(2);
-//    mySprite->setPosition(mySprite->getContentSize() / 2);
-    
-    
-    for (int i = 0; i < 3; i++) {
-        auto page = ui::Layout::create();
-        page->setContentSize(pageView->getContentSize());
-        
-        auto mySprite = cocos2d::Sprite::create("square.png");
-        mySprite->setScale(2);
-        mySprite->setPosition(visibleSize / 2);
-        page->addChild(mySprite);
-        pageView->insertPage(page, i);
-    }
-    
-    pageView->addEventListener([](Ref *sender, ui::PageView::EventType type){
-        if (type == ui::PageView::EventType::TURNING) {
-            auto pageView = dynamic_cast<ui::PageView *>(sender);
-            CCLOG("Current page = %zd", pageView->getCurrentPageIndex());
-        }
-    });
+//    // PageView
+//    auto pageView = ui::PageView::create();
+//    pageView->setPosition(Vec2::ZERO);
+//    pageView->setContentSize(visibleSize);
+//    this->addChild(pageView);
+//    for (int i = 0; i < 3; i++) {
+//        auto page = ui::Layout::create();
+//        page->setContentSize(pageView->getContentSize());
+//        auto mySprite = cocos2d::Sprite::create("square.png");
+//        mySprite->setScale(2);
+//        mySprite->setPosition(visibleSize / 2);
+//        page->addChild(mySprite);
+//        pageView->insertPage(page, i);
+//    }
+//    pageView->addEventListener([](Ref *sender, ui::PageView::EventType type){
+//        if (type == ui::PageView::EventType::TURNING) {
+//            auto pageView = dynamic_cast<ui::PageView *>(sender);
+//            CCLOG("Current page = %zd", pageView->getCurrentPageIndex());
+//        }
+//    });
+
+    // ScrollView
+    auto scrollView = ui::ScrollView::create();
+    scrollView->setPosition(Vec2::ZERO);
+    scrollView->setDirection(ui::ScrollView::Direction::BOTH);
+    scrollView->setBounceEnabled(true);
+    this->addChild(scrollView);
+    auto mySprite = cocos2d::Sprite::create("HelloWorld.png");
+    mySprite->setScale(2);
+    mySprite->setPosition(mySprite->getBoundingBox().size / 2);
+    scrollView->addChild(mySprite);
+    scrollView->setInnerContainerSize(mySprite->getBoundingBox().size);
+    scrollView->setContentSize(mySprite->getContentSize());
     
     return true;
 }
