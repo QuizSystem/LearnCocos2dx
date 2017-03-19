@@ -63,22 +63,38 @@ bool Splash::init()
     sprite->setScale(2);
     this->addChild(sprite);
     
-    //UI Checkbox
-    auto checkbox = ui::CheckBox::create("uncheck.png", "check.png");
-    checkbox->setPosition(visibleSize / 2);
-    checkbox->addEventListener([&](Ref *sender, ui::CheckBox::EventType type){
-        switch (type) {
-            case ui::CheckBox::EventType::SELECTED:
-                CCLOG("Seleted");
-                break;
-            case ui::CheckBox::EventType::UNSELECTED:
-                CCLOG("Unseleted");
-                break;
-            default:
-                break;
+//    //UI Checkbox
+//    auto checkbox = ui::CheckBox::create("uncheck.png", "check.png");
+//    checkbox->setPosition(visibleSize / 2);
+//    checkbox->addEventListener([&](Ref *sender, ui::CheckBox::EventType type){
+//        switch (type) {
+//            case ui::CheckBox::EventType::SELECTED:
+//                CCLOG("Seleted");
+//                break;
+//            case ui::CheckBox::EventType::UNSELECTED:
+//                CCLOG("Unseleted");
+//                break;
+//            default:
+//                break;
+//        }
+//    });
+//    this->addChild(checkbox);
+    
+    // UI Load Action
+    auto loadingBar = ui::LoadingBar::create("blueline.png");
+    loadingBar->setScaleX(0.3);
+    loadingBar->setPosition(visibleSize / 2);
+    loadingBar->setDirection(ui::LoadingBar::Direction::LEFT);
+    loadingBar->setPercent(0);
+    this->addChild(loadingBar);
+    this->schedule([=](float delta) {
+        float percent = loadingBar->getPercent();
+        percent++;
+        loadingBar->setPercent(percent);
+        if (percent >= 100) {
+            this->unschedule("updateLoadingBar");
         }
-    });
-    this->addChild(checkbox);
+    }, 0.1f, "updateLoadingBar");
     
 //    square = Sprite::create("square.png");
 //    square->setPosition(Vec2::ZERO);
