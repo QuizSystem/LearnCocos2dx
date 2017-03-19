@@ -117,15 +117,44 @@ bool Splash::init()
 //    menu->setPosition(Vec2::ZERO);
 //    this->addChild(menu, 1);
     
-    auto menuImages = MenuItemImage::create("uncheck.png", "check.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
-    menuImages->setTag(1);
-    auto menuImages1 = MenuItemImage::create("redline.png", "blueline.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
-    menuImages1->setTag(2);
+//    // UI Menu
+//    auto menuImages = MenuItemImage::create("uncheck.png", "check.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
+//    menuImages->setTag(1);
+//    auto menuImages1 = MenuItemImage::create("redline.png", "blueline.png", CC_CALLBACK_1(Splash::onClickMenuItem, this));
+//    menuImages1->setTag(2);
+//    
+//    auto menu = Menu::create(menuImages, menuImages1, NULL);
+//    menu->setPosition(visibleSize / 2);
+//    menu->alignItemsVertically();
+//    this->addChild(menu);
     
-    auto menu = Menu::create(menuImages, menuImages1, NULL);
-    menu->setPosition(visibleSize / 2);
-    menu->alignItemsVertically();
-    this->addChild(menu);
+    auto pageView = ui::PageView::create();
+    pageView->setPosition(Vec2::ZERO);
+    pageView->setContentSize(visibleSize);
+    this->addChild(pageView);
+//    auto mySprite = cocos2d::Sprite::create("square.png");
+//    mySprite->setScale(2);
+//    mySprite->setPosition(mySprite->getContentSize() / 2);
+    
+    
+    for (int i = 0; i < 3; i++) {
+        auto page = ui::Layout::create();
+        page->setContentSize(pageView->getContentSize());
+        
+        auto mySprite = cocos2d::Sprite::create("square.png");
+        mySprite->setScale(2);
+        mySprite->setPosition(visibleSize / 2);
+        page->addChild(mySprite);
+        pageView->insertPage(page, i);
+    }
+    
+    pageView->addEventListener([](Ref *sender, ui::PageView::EventType type){
+        if (type == ui::PageView::EventType::TURNING) {
+            auto pageView = dynamic_cast<ui::PageView *>(sender);
+            CCLOG("Current page = %zd", pageView->getCurrentPageIndex());
+        }
+    });
+    
     return true;
 }
 
