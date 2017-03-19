@@ -149,19 +149,44 @@ bool Splash::init()
 //        }
 //    });
 
-    // ScrollView
-    auto scrollView = ui::ScrollView::create();
-    scrollView->setPosition(Vec2::ZERO);
-    scrollView->setDirection(ui::ScrollView::Direction::BOTH);
-    scrollView->setBounceEnabled(true);
-    this->addChild(scrollView);
-    auto mySprite = cocos2d::Sprite::create("HelloWorld.png");
-    mySprite->setScale(2);
-    mySprite->setPosition(mySprite->getBoundingBox().size / 2);
-    scrollView->addChild(mySprite);
-    scrollView->setInnerContainerSize(mySprite->getBoundingBox().size);
-    scrollView->setContentSize(mySprite->getContentSize());
+//    // ScrollView
+//    auto scrollView = ui::ScrollView::create();
+//    scrollView->setPosition(Vec2::ZERO);
+//    scrollView->setDirection(ui::ScrollView::Direction::BOTH);
+//    scrollView->setBounceEnabled(true);
+//    this->addChild(scrollView);
+//    auto mySprite = cocos2d::Sprite::create("HelloWorld.png");
+//    mySprite->setScale(2);
+//    mySprite->setPosition(mySprite->getBoundingBox().size / 2);
+//    scrollView->addChild(mySprite);
+//    scrollView->setInnerContainerSize(mySprite->getBoundingBox().size);
+//    scrollView->setContentSize(mySprite->getContentSize());
     
+    // Slider
+    auto slider = ui::Slider::create("redline.png", "circle.png");
+    slider->loadProgressBarTexture("blueline.png");
+    slider->setPosition(visibleSize / 2);
+    this->addChild(slider);
+    slider->addEventListener([](cocos2d::Ref *sender, ui::Slider::EventType type){
+        auto slider = dynamic_cast<ui::Slider *>(sender);
+        switch (type) {
+            case ui::Slider::EventType::ON_PERCENTAGE_CHANGED:
+                CCLOG("ON_PERCENTAGE_CHANGED");
+                break;
+            case ui::Slider::EventType::ON_SLIDEBALL_DOWN:
+                CCLOG("ON_SLIDEBALL_DOWN");
+                break;
+            case ui::Slider::EventType::ON_SLIDEBALL_UP:
+                CCLOG("ON_SLIDEBALL_UP");
+                break;
+            case ui::Slider::EventType::ON_SLIDEBALL_CANCEL:
+                CCLOG("ON_SLIDEBALL_CANCEL");
+                break;
+            default:
+                break;
+        }
+    });
+
     return true;
 }
 
