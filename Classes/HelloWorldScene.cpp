@@ -30,6 +30,12 @@ bool HelloWorld::init()
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    // Touch
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+//    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
     CCLOG("width = %f, height = %f", visibleSize.width, visibleSize.height);
     CCLOG("x = %f, y = %f", origin.x, origin.y);
@@ -99,6 +105,11 @@ bool HelloWorld::init()
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);
     
+    return true;
+}
+
+bool HelloWorld::onTouchBegan(Touch *touch, Event *unused_event) {
+    CCLOG("Thieu Mao is here");
     return true;
 }
 
