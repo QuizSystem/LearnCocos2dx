@@ -1,6 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "SplashScene.h"
+#include "NetworkScene.h"
 
 USING_NS_CC;
 
@@ -75,8 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-//    auto scene = HelloWorld::createScene();
-    auto scene = Splash::createScene();
+    auto scene = Network::createScene();
     
     // run
     director->runWithScene(scene);
