@@ -1,0 +1,19 @@
+{
+	"student" : [
+		{
+			"name" : "Thieu Mao",
+			"age" : 25,
+			"address" : "Bac Giang"
+		},
+		{
+			"name" : "Leo Linh Tinh",
+			"age" : 23,
+			"address" : "Thanh Hoa"
+		},
+		{
+			"name" : "Mot Mao",
+			"age" : 25,
+			"address" : "Ha Noi"
+		}
+	]
+}
