@@ -162,30 +162,58 @@ bool Splash::init()
 //    scrollView->setInnerContainerSize(mySprite->getBoundingBox().size);
 //    scrollView->setContentSize(mySprite->getContentSize());
     
-    // Slider
-    auto slider = ui::Slider::create("redline.png", "circle.png");
-    slider->loadProgressBarTexture("blueline.png");
-    slider->setPosition(visibleSize / 2);
-    this->addChild(slider);
-    slider->addEventListener([](cocos2d::Ref *sender, ui::Slider::EventType type){
-        auto slider = dynamic_cast<ui::Slider *>(sender);
+//    // Slider
+//    auto slider = ui::Slider::create("redline.png", "circle.png");
+//    slider->loadProgressBarTexture("blueline.png");
+//    slider->setPosition(visibleSize / 2);
+//    this->addChild(slider);
+//    slider->addEventListener([](cocos2d::Ref *sender, ui::Slider::EventType type){
+//        auto slider = dynamic_cast<ui::Slider *>(sender);
+//        switch (type) {
+//            case ui::Slider::EventType::ON_PERCENTAGE_CHANGED:
+//                CCLOG("ON_PERCENTAGE_CHANGED");
+//                break;
+//            case ui::Slider::EventType::ON_SLIDEBALL_DOWN:
+//                CCLOG("ON_SLIDEBALL_DOWN");
+//                break;
+//            case ui::Slider::EventType::ON_SLIDEBALL_UP:
+//                CCLOG("ON_SLIDEBALL_UP");
+//                break;
+//            case ui::Slider::EventType::ON_SLIDEBALL_CANCEL:
+//                CCLOG("ON_SLIDEBALL_CANCEL");
+//                break;
+//            default:
+//                break;
+//        }
+//    });
+    
+    // TextField
+    auto textField = ui::TextField::create("Enter your name", "Arial", 30);
+    textField->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 40));
+    this->addChild(textField);
+    textField->addEventListener([](Ref *sender, ui::TextField::EventType type){
+        auto textField = dynamic_cast<ui::TextField *>(sender);
         switch (type) {
-            case ui::Slider::EventType::ON_PERCENTAGE_CHANGED:
-                CCLOG("ON_PERCENTAGE_CHANGED");
+            case ui::TextField::EventType::ATTACH_WITH_IME:
+                CCLOG("Displayed keyboard");
                 break;
-            case ui::Slider::EventType::ON_SLIDEBALL_DOWN:
-                CCLOG("ON_SLIDEBALL_DOWN");
+            case ui::TextField::EventType::DETACH_WITH_IME:
+                CCLOG("Dissmissed keyboard");
                 break;
-            case ui::Slider::EventType::ON_SLIDEBALL_UP:
-                CCLOG("ON_SLIDEBALL_UP");
+            case ui::TextField::EventType::INSERT_TEXT:
+                CCLOG("Inserted text: %s", textField->getString().c_str());
                 break;
-            case ui::Slider::EventType::ON_SLIDEBALL_CANCEL:
-                CCLOG("ON_SLIDEBALL_CANCEL");
+            case ui::TextField::EventType::DELETE_BACKWARD:
+                CCLOG("Deleted backward");
                 break;
             default:
                 break;
         }
     });
+//    ATTACH_WITH_IME,
+//    DETACH_WITH_IME,
+//    INSERT_TEXT,
+//    DELETE_BACKWARD,
 
     return true;
 }
