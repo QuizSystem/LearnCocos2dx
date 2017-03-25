@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "NetworkJsonScene.h"
+#include "DatabaseScene.h"
 
 USING_NS_CC;
 
@@ -74,7 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = NetworkJson::createScene();
+    auto scene = Database::createScene();
     
     // run
     director->runWithScene(scene);

@@ -76,6 +76,10 @@
 		F85EAD091E86F73500CB1D3B /* NetworkJsonScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85EAD071E86F73500CB1D3B /* NetworkJsonScene.cpp */; };
 		F85F88271E7E959800828A26 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85F88251E7E959800828A26 /* SplashScene.cpp */; };
 		F85F88281E7E959800828A26 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85F88251E7E959800828A26 /* SplashScene.cpp */; };
+		F86F182A1E86FFAD00B74B12 /* DatabaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F86F18291E86FFAD00B74B12 /* DatabaseScene.cpp */; };
+		F86F182B1E86FFAD00B74B12 /* DatabaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F86F18291E86FFAD00B74B12 /* DatabaseScene.cpp */; };
+		F86F182E1E87060B00B74B12 /* sqlite3secure.c in Sources */ = {isa = PBXBuildFile; fileRef = F86F182D1E87060B00B74B12 /* sqlite3secure.c */; };
+		F86F182F1E87060B00B74B12 /* sqlite3secure.c in Sources */ = {isa = PBXBuildFile; fileRef = F86F182D1E87060B00B74B12 /* sqlite3secure.c */; };
 		F8B7EBE01E7D9CE400B8526E /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B7EBDF1E7D9CE400B8526E /* square.png */; };
 		F8B7EBE11E7D9CE400B8526E /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B7EBDF1E7D9CE400B8526E /* square.png */; };
 		F8F8CD931E7EAFD80048F5A4 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F8CD911E7EAFD80048F5A4 /* check.png */; };
@@ -196,6 +200,10 @@
 		F85EAD071E86F73500CB1D3B /* NetworkJsonScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkJsonScene.cpp; sourceTree = "<group>"; };
 		F85F88251E7E959800828A26 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		F85F88261E7E959800828A26 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
+		F86F18271E86FFA000B74B12 /* DatabaseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseScene.h; sourceTree = "<group>"; };
+		F86F18291E86FFAD00B74B12 /* DatabaseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DatabaseScene.cpp; sourceTree = "<group>"; };
+		F86F182C1E8705FE00B74B12 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = ../cocos2d/external/wxsqlite/sqlite3.h; sourceTree = "<group>"; };
+		F86F182D1E87060B00B74B12 /* sqlite3secure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sqlite3secure.c; path = ../cocos2d/external/wxsqlite/sqlite3secure.c; sourceTree = "<group>"; };
 		F8B7EBDF1E7D9CE400B8526E /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
 		F8F8CD911E7EAFD80048F5A4 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		F8F8CD921E7EAFD80048F5A4 /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck.png; sourceTree = "<group>"; };
@@ -355,6 +363,10 @@
 				F85EACFE1E86DEF000CB1D3B /* PhysicScene.h */,
 				F85EAD061E86F73500CB1D3B /* NetworkJsonScene.h */,
 				F85EAD071E86F73500CB1D3B /* NetworkJsonScene.cpp */,
+				F86F18271E86FFA000B74B12 /* DatabaseScene.h */,
+				F86F18291E86FFAD00B74B12 /* DatabaseScene.cpp */,
+				F86F182C1E8705FE00B74B12 /* sqlite3.h */,
+				F86F182D1E87060B00B74B12 /* sqlite3secure.c */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -567,6 +579,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86F182E1E87060B00B74B12 /* sqlite3secure.c in Sources */,
+				F86F182A1E86FFAD00B74B12 /* DatabaseScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				F85F88271E7E959800828A26 /* SplashScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
@@ -583,8 +597,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F85EAD001E86DEF000CB1D3B /* PhysicScene.cpp in Sources */,
+				F86F182B1E86FFAD00B74B12 /* DatabaseScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				F85F88281E7E959800828A26 /* SplashScene.cpp in Sources */,
+				F86F182F1E87060B00B74B12 /* sqlite3secure.c in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				F85EAD091E86F73500CB1D3B /* NetworkJsonScene.cpp in Sources */,
