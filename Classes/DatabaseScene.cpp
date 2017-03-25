@@ -19,6 +19,7 @@ bool Database::init() {
     
     sqlite3 *database;
     std::string path = FileUtils::getInstance()->getWritablePath() + "data.sql";
+    CCLOG("path = %s", path.c_str());
     if (sqlite3_open(path.c_str(), &database) != SQLITE_OK) {
         sqlite3_close(database);
         CCLOG("Error read database");
@@ -28,10 +29,9 @@ bool Database::init() {
             CCLOG("Failure create table");
         } else {
             CCLOG("Success create table");
+            sqlite3_exec(database, "insert into student values(1, 'Thieu Mao', 'male')", NULL, NULL, NULL);
         }
     }
-    
-    
-    
+    sqlite3_close(database);
     return true;
 }
