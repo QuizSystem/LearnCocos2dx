@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "PhysicScene.h"
+#include "NetworkJsonScene.h"
 
 USING_NS_CC;
 
@@ -74,7 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = Physic::createScene();
+    auto scene = NetworkJson::createScene();
     
     // run
     director->runWithScene(scene);
