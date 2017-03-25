@@ -72,6 +72,8 @@
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 		F806FAF41E80318C0033CBA0 /* NetworkScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F806FAF31E80318C0033CBA0 /* NetworkScene.cpp */; };
 		F806FAF51E80318C0033CBA0 /* NetworkScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F806FAF31E80318C0033CBA0 /* NetworkScene.cpp */; };
+		F85EACFF1E86DEF000CB1D3B /* PhysicScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85EACFD1E86DEF000CB1D3B /* PhysicScene.cpp */; };
+		F85EAD001E86DEF000CB1D3B /* PhysicScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85EACFD1E86DEF000CB1D3B /* PhysicScene.cpp */; };
 		F85F88271E7E959800828A26 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85F88251E7E959800828A26 /* SplashScene.cpp */; };
 		F85F88281E7E959800828A26 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85F88251E7E959800828A26 /* SplashScene.cpp */; };
 		F8B7EBE01E7D9CE400B8526E /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B7EBDF1E7D9CE400B8526E /* square.png */; };
@@ -190,6 +192,8 @@
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		F806FAF31E80318C0033CBA0 /* NetworkScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkScene.cpp; sourceTree = "<group>"; };
 		F806FAF71E80319A0033CBA0 /* NetworkScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkScene.h; sourceTree = "<group>"; };
+		F85EACFD1E86DEF000CB1D3B /* PhysicScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicScene.cpp; sourceTree = "<group>"; };
+		F85EACFE1E86DEF000CB1D3B /* PhysicScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicScene.h; sourceTree = "<group>"; };
 		F85F88251E7E959800828A26 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		F85F88261E7E959800828A26 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		F8B7EBDF1E7D9CE400B8526E /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				F806FAF31E80318C0033CBA0 /* NetworkScene.cpp */,
 				F806FAF71E80319A0033CBA0 /* NetworkScene.h */,
+				F85EACFD1E86DEF000CB1D3B /* PhysicScene.cpp */,
+				F85EACFE1E86DEF000CB1D3B /* PhysicScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -567,6 +573,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				F806FAF41E80318C0033CBA0 /* NetworkScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				F85EACFF1E86DEF000CB1D3B /* PhysicScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F85EAD001E86DEF000CB1D3B /* PhysicScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				F85F88281E7E959800828A26 /* SplashScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
